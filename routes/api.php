@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SupplierController;
@@ -19,7 +20,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('customers', CustomerController::class);
     Route::apiResource('orders', OrderController::class);
     Route::apiResource('inventories', InventoryController::class);
-    
+    Route::apiResource('users', UserController::class);
     Route::post('/logout', [AuthController::class, 'logout']);
 });
 

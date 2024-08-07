@@ -7,6 +7,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\OrderItemController;
 use App\Http\Controllers\InventoryController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,6 +20,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('suppliers', SupplierController::class);
     Route::apiResource('customers', CustomerController::class);
     Route::apiResource('orders', OrderController::class);
+    Route::apiResource('order-items', OrderItemController::class);
     Route::apiResource('inventories', InventoryController::class);
     Route::apiResource('users', UserController::class);
     Route::post('/logout', [AuthController::class, 'logout']);

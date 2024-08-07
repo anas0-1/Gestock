@@ -47,17 +47,19 @@ class OrderItemController extends Controller
         if (! Gate::allows('update', $orderItem)) {
             abort(403);
         }
-        
+    
         $validated = $request->validate([
             'order_id' => 'sometimes|exists:orders,id',
             'product_id' => 'sometimes|exists:products,id',
             'quantity' => 'sometimes|integer|min:1',
             'price' => 'sometimes|numeric',
         ]);
-
+    
         $orderItem->update($validated);
+    
         return $orderItem;
     }
+    
 
     public function destroy(OrderItem $orderItem)
     {

@@ -3,6 +3,7 @@
 namespace App\Providers;
 use App\Models\User;
 use App\Policies\UserPolicy;
+use App\Policies\OrderItemPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -15,6 +16,7 @@ class AppServiceProvider extends ServiceProvider
         Supplier::class => SupplierPolicy::class,
         Customer::class => CustomerPolicy::class,
         Order::class => OrderPolicy::class,
+        OrderItem::class => OrderItemPolicy::class,
         Inventory::class => InventoryPolicy::class,
     ];
     public function boot(): void

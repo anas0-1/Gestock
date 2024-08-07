@@ -55,18 +55,23 @@ class OrderController extends Controller
     }
 
     public function update(Request $request, Order $order)
-    {
-        if (! Gate::allows('update', $order)) {
-            abort(403);
-        }
-        
-        $validated = $request->validate([
-            'status' => 'sometimes|string',
-        ]);
-
-        $order->update($validated);
-        return $order;
+{
+    if (! Gate::allows('update', $order)) {
+        abort(403);
     }
+
+    $validated = $request->validate([
+        'customer_id' => 'sometimes|exists:customers,id',
+        'user_id' => 'sometimes|exists:users,id',
+        'total_price' => 'sometimes|numeric',
+        'status' => 'sometimes|string',
+    ]);
+
+    $order->update($validated);
+
+    return $order->load('orderItems');
+}
+
 
     public function destroy(Order $order)
     {

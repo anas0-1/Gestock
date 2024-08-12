@@ -51,7 +51,7 @@ class CategoryController extends Controller
 
         $category->update($validated);
         return $category;
-    }
+    }       
 
     public function destroy(Category $category)
     {
